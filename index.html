@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+ <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260923-05-29a7a27","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YACgEZulLoA,0","Arial Narrow":"YAGyDvJ_4Ts,0","Arial Rounded MT Bold":"YAFcfoaHu-s,0","Arial":"YAGyDvJ_4Ts,0","Avenir Next":"YAFcfmNq6UY,0","Baloo 2":"YADK30bC6HQ,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAFcfvtOAUY,1","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHQutsX00Q,0","Hanken Grotesk":"YAFcfhwp99E,0","Helvetica Neue":"YAFcf6CtJfI,0","Helvetica":"YAFcf6CtJfI,0","IBM Plex Mono":"YAFdJkmvhGI,0","Impact":"YAFcfnjI7Vk,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YADK3zbC6RM,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Pacifico":"YADLjORQ1u4,0","Phantom Sans":"YAFdJvgJ5TU,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAGvf3_u0_Q,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Source Serif 4":"YACgEfdj394,0","Space Grotesk":"YADZ-dYEmhg,0","Space Mono":"YADW1-vpsoc,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","UV Display":"YAEdVfSSpYo,0","UV Sans":"YAFdJvgJ5TU,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YAD1aFjegN8,0","ui-sans-serif":"YACkoD1yZN0,0"}}');</script><script src="/_sdk/83d6dfdadcd4750a.telemetry_sdk.js" integrity="sha512-XS4Dvzp6vbagZS9vFErihvr8aO3S0tH78KWUefn06fmL4WYqryBtZj/IOLITYj7dFA4gPVvPg1W/JB1DK3uLNQ=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHIVOLCS Guardian</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#06100d; --panel:#0a1712; --green:#54f29c; --mint:#baffd5; --muted:#9ccdb0; --amber:#f4b942; --danger:#ff725c; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Source Sans Pro",sans-serif; color:#e8fff2; background:#06100d; }
+    .sensor-bg { background-color:#06100d; background-image:linear-gradient(rgba(84,242,156,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(84,242,156,.045) 1px,transparent 1px),radial-gradient(circle at 50% -20%,#164d36 0%,#06100d 52%); background-size:26px 26px,26px 26px,100% 100%; }
+    .terminal { font-family:"Space Mono",monospace; }
+    .panel { background:rgba(7,22,16,.93); border:1px solid rgba(84,242,156,.23); box-shadow:inset 0 1px rgba(180,255,211,.06),0 16px 34px rgba(0,0,0,.24); }
+    .line-card { border:1px solid rgba(84,242,156,.22); background:linear-gradient(135deg,rgba(22,67,46,.3),rgba(4,12,9,.88)); transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+    .line-card:hover:not(:disabled) { border-color:#54f29c; transform:translateY(-2px); box-shadow:0 0 24px rgba(84,242,156,.12); }
+    .active-nav { background:rgba(84,242,156,.12)!important; border-color:#54f29c!important; color:#baffd5!important; }
+    .locked { opacity:.42; }
+    .glow { text-shadow:0 0 16px rgba(84,242,156,.85); }
+    .scanline::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(transparent 45%,rgba(84,242,156,.08) 50%,transparent 55%); background-size:100% 7px; opacity:.32; }
+    .pulse-dot { animation:pulse 1.7s infinite; }
+    .bounce { animation:bounce .35s ease-out; }
+    .robot-float { animation:float 2.8s ease-in-out infinite; }
+    .boot-entry { animation:enter .45s both; }
+    .dino { transition:bottom .14s ease; }
+    .dino.jump { bottom:104px!important; }
+    .obstacle { animation:travel 3.2s linear forwards; }
+    .memory-card { perspective:900px; }
+    .memory-card-inner { transition:transform .35s; transform-style:preserve-3d; }
+    .memory-card.flipped .memory-card-inner,.memory-card.matched .memory-card-inner { transform:rotateY(180deg); }
+    .memory-face { backface-visibility:hidden; }
+    .memory-back { transform:rotateY(180deg); }
+    .drag-token.dragging { opacity:.42; }
+    @keyframes pulse { 50% { opacity:.35; transform:scale(.72); } }
+    @keyframes enter { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+    @keyframes float { 50% { transform:translateY(-5px); } }
+    @keyframes bounce { 50% { transform:translateY(-10px); } }
+    @keyframes travel { from { right:-2rem; } to { right:calc(100% + 8rem); } }
+    button:focus-visible,input:focus-visible { outline:2px solid #54f29c; outline-offset:3px; }
+    [draggable="true"] { cursor:grab; }
+  </style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/8de366929c5f3b48.data_sdk.js" type="text/javascript" integrity="sha512-TyQ8k8cZj66xe/aENmn6RyZpdOFZXbAo5+KBG3PeFM+Q4qMTHU8xAqmq4ADClNfPrstgQYV6OzZHwLTnElzB2g=="></script>
+  <script src="/_sdk/94916171342f3214.editing_sdk.js" type="text/javascript" integrity="sha512-iD6yxTksfey/7N3Df0f52UtQsuvEgQYXQKioLwfyua/wCe7br8wUuc/pDNnGdXhJ/6CJKJ9sPcWHBNlAjOMhEQ=="></script>
+  <script src="/_sdk/765e1fea0cec97ce.resizing_sdk.js" type="text/javascript" integrity="sha512-IRTJnqww0+HQ5V/LlWEQrlD5SrYHaVvaeVoNe8HYQXoaguzUGheSd9+n9s6WOgaTcEH0g37DuINHZ9aqfzWjlw=="></script>
+ </head>
+ <body data-template-id="__page-root" class="sensor-bg w-full min-h-screen">
+  <div id="boot-screen" class="fixed inset-0 z-[70] flex items-center justify-center overflow-hidden bg-[#020906]">
+   <img data-template-id="loading-background" loading="lazy" class="canva-image absolute inset-0 h-full w-full object-cover opacity-30">
+   <div class="absolute inset-0 bg-gradient-to-b from-[#03110b]/70 via-[#06100d]/85 to-[#020906]"></div>
+   <main class="relative mx-5 w-full max-w-2xl border border-emerald-300/40 bg-[#06140e]/90 p-7 shadow-[0_0_55px_rgba(84,242,156,.18)] sm:p-10">
+    <div class="mb-6 flex items-center gap-3">
+     <div class="flex h-12 w-12 items-center justify-center border border-emerald-300 bg-emerald-300/10 text-emerald-300"><i data-lucide="scan-line"></i>
+     </div>
+     <div>
+      <p data-template-id="boot-kicker" class="canva-text terminal text-xs uppercase tracking-[.24em]"></p>
+      <h1 data-template-id="boot-title" class="canva-text glow mt-1 font-bold"></h1>
+     </div>
+    </div>
+    <div class="terminal space-y-2 border-y border-emerald-300/20 py-5 text-xs text-emerald-100/75">
+     <p class="boot-entry">[OK] CANVA AI learning environment initialized</p>
+     <p class="boot-entry" style="animation-delay:.18s">[OK] PHIVOLCS field data simulator connected</p>
+     <p class="boot-entry" style="animation-delay:.36s">[OK] RoboVolc learning companion online</p>
+    </div>
+    <p data-template-id="boot-description" class="canva-text mt-6 max-w-xl text-base text-emerald-50/80"></p><button id="start-button" data-template-id="start-button" type="button" class="canva-button terminal mt-7 inline-flex items-center gap-2 border border-emerald-200 bg-emerald-300 px-5 py-3 font-bold text-[#052214] transition hover:bg-white"> <i data-lucide="play"></i><span data-template-id="start-button-label" class="canva-text"></span> </button>
+   </main>
+  </div>
+  <div id="app-shell" class="hidden w-full">
+   <header class="sticky top-0 z-40 border-b border-emerald-300/20 bg-[#06100d]/95 backdrop-blur">
+    <div class="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-3">
+     <div class="flex items-center gap-3">
+      <div class="flex h-10 w-10 items-center justify-center border border-emerald-300 bg-emerald-300/10 text-emerald-300"><i data-lucide="radio-tower"></i>
+      </div>
+      <div>
+       <h1 data-template-id="app-title" class="canva-text glow font-bold"></h1>
+       <p data-template-id="app-subtitle" class="canva-text hidden text-xs text-emerald-100/60 sm:block"></p>
+      </div>
+     </div>
+     <div class="flex items-center gap-2 terminal text-xs">
+      <div class="border border-emerald-300/20 bg-emerald-300/5 px-3 py-2">
+       XP <strong id="xp">0</strong>
+      </div>
+      <div class="hidden border border-emerald-300/20 bg-emerald-300/5 px-3 py-2 sm:block">
+       BADGES <strong id="badges">0/5</strong>
+      </div><button id="sound-button" type="button" class="flex h-9 w-9 items-center justify-center border border-emerald-300/25 text-emerald-200 hover:bg-emerald-300/10" aria-label="Toggle sound"><i data-lucide="volume-2"></i></button> <button id="handbook-button" data-template-id="handbook-button" type="button" class="canva-button hidden border border-amber-300/60 px-3 py-2 text-amber-200 hover:bg-amber-300/10 sm:block"><span data-template-id="handbook-button-label" class="canva-text"></span></button>
+     </div>
+    </div>
+   </header>
+   <main class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-5 p-4 lg:grid-cols-12 lg:p-6">
+    <aside class="space-y-5 lg:col-span-4">
+     <section class="panel scanline relative overflow-hidden p-4">
+      <div class="mb-3 flex items-start justify-between gap-3">
+       <div>
+        <p data-template-id="monitor-kicker" class="canva-text terminal text-[10px] tracking-[.2em] text-emerald-200/60"></p>
+        <h2 data-template-id="monitor-title" class="canva-text mt-1 font-bold"></h2>
+       </div><span id="alert-badge" class="terminal border border-emerald-300/50 bg-emerald-300/10 px-2 py-1 text-[10px] font-bold text-emerald-200">LEVEL 0</span>
+      </div>
+      <div class="relative overflow-hidden border border-emerald-300/20">
+       <img data-template-id="mayon-monitor-image" loading="lazy" class="canva-image h-48 w-full object-cover opacity-75">
+       <div class="absolute inset-0 bg-gradient-to-t from-[#06100d] via-transparent to-transparent"></div>
+       <div class="absolute bottom-3 left-3 terminal text-[10px] text-emerald-100">
+        <p><span class="pulse-dot mr-1 inline-block h-2 w-2 rounded-full bg-emerald-300"></span>SEISMIC: WATCH</p>
+        <p class="mt-1">SO₂: <span class="text-amber-200">120 t/day</span></p>
+       </div>
+      </div>
+      <p data-template-id="monitor-caption" class="canva-text mt-3 border-l-2 border-emerald-300/60 pl-3 text-sm italic text-emerald-50/75"></p>
+     </section>
+     <section class="panel p-4" aria-label="RoboVolc feedback">
+      <div class="flex gap-3">
+       <div class="robot-float flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-emerald-300 bg-emerald-300/10 text-emerald-200"><i data-lucide="bot"></i>
+       </div>
+       <div>
+        <p data-template-id="robovolc-name" class="canva-text terminal text-xs font-bold tracking-[.16em] text-amber-200"></p>
+        <p id="feedback" class="mt-1 text-sm leading-relaxed text-emerald-50/80" aria-live="polite"></p>
+       </div>
+      </div>
+     </section>
+     <nav aria-label="Learning modules" class="panel p-3">
+      <h2 data-template-id="module-nav-title" class="canva-text terminal mb-3 text-xs tracking-[.18em] text-emerald-200/70"></h2>
+      <div class="space-y-2">
+       <button type="button" data-module="1" class="module-nav active-nav w-full border p-3 text-left"><strong>01 / WATCHERS</strong><span class="mt-1 block text-xs opacity-70">Monitoring instruments</span></button> <button type="button" data-module="2" class="module-nav locked w-full border border-emerald-300/20 p-3 text-left"><strong>02 / ALERT MATRIX</strong><span class="mt-1 block text-xs opacity-70">Classify the danger</span></button> <button type="button" data-module="3" class="module-nav locked w-full border border-emerald-300/20 p-3 text-left"><strong>03 / HISTORY ARCHIVE</strong><span class="mt-1 block text-xs opacity-70">Eruption field reports</span></button> <button type="button" data-module="4" class="module-nav locked w-full border border-emerald-300/20 p-3 text-left"><strong>04 / HAZARD LAB</strong><span class="mt-1 block text-xs opacity-70">Cascading hazards</span></button> <button type="button" data-module="5" class="module-nav locked w-full border border-emerald-300/20 p-3 text-left"><strong>05 / RESILIENCE</strong><span class="mt-1 block text-xs opacity-70">Go-bag and evacuation</span></button>
+      </div>
+     </nav>
+    </aside>
+    <section class="lg:col-span-8">
+     <div class="panel min-h-[620px] p-5 sm:p-7">
+      <section id="module-1" class="module-view">
+       <p data-template-id="m1-kicker" class="canva-text terminal text-xs tracking-[.2em] text-emerald-200/70"></p>
+       <h2 data-template-id="m1-title" class="canva-text mt-2 font-bold"></h2>
+       <p data-template-id="m1-copy" class="canva-text mt-2 max-w-3xl text-emerald-50/70"></p>
+       <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        <button type="button" data-instrument="seismo" class="instrument line-card overflow-hidden p-0 text-left"><img data-template-id="seismo-image" loading="lazy" class="canva-image h-28 w-full object-cover opacity-70"><span class="block p-4"><strong data-template-id="seismo-title" class="canva-text block"></strong><small data-template-id="seismo-copy" class="canva-text mt-1 block text-emerald-50/65"></small><em class="instrument-status terminal mt-3 block text-[10px] text-amber-200">STATUS: OFFLINE</em></span></button> <button type="button" data-instrument="tilt" class="instrument line-card overflow-hidden p-0 text-left"><img data-template-id="tilt-image" loading="lazy" class="canva-image h-28 w-full object-cover opacity-70"><span class="block p-4"><strong data-template-id="tilt-title" class="canva-text block"></strong><small data-template-id="tilt-copy" class="canva-text mt-1 block text-emerald-50/65"></small><em class="instrument-status terminal mt-3 block text-[10px] text-amber-200">STATUS: OFFLINE</em></span></button> <button type="button" data-instrument="gas" class="instrument line-card overflow-hidden p-0 text-left"><img data-template-id="gas-image" loading="lazy" class="canva-image h-28 w-full object-cover opacity-70"><span class="block p-4"><strong data-template-id="gas-title" class="canva-text block"></strong><small data-template-id="gas-copy" class="canva-text mt-1 block text-emerald-50/65"></small><em class="instrument-status terminal mt-3 block text-[10px] text-amber-200">STATUS: OFFLINE</em></span></button> <button type="button" data-instrument="thermal" class="instrument line-card overflow-hidden p-0 text-left"><img data-template-id="thermal-image" loading="lazy" class="canva-image h-28 w-full object-cover opacity-70"><span class="block p-4"><strong data-template-id="thermal-title" class="canva-text block"></strong><small data-template-id="thermal-copy" class="canva-text mt-1 block text-emerald-50/65"></small><em class="instrument-status terminal mt-3 block text-[10px] text-amber-200">STATUS: OFFLINE</em></span></button>
+       </div>
+       <div class="mt-6 border border-emerald-300/25 bg-emerald-300/5 p-4">
+        <h3 data-template-id="m1-question" class="canva-text font-bold"></h3>
+        <div class="mt-3 grid gap-2 sm:grid-cols-2">
+         <button data-answer="false" type="button" class="answer border border-emerald-300/20 p-3 text-left text-sm hover:border-emerald-300">A — One instrument predicts the exact minute of an eruption.</button> <button data-answer="true" type="button" class="answer border border-emerald-300/20 p-3 text-left text-sm hover:border-emerald-300">B — Multiple signs create a stronger warning picture.</button>
+        </div>
+       </div>
+      </section>
+      <section id="module-2" class="module-view hidden">
+       <p data-template-id="m2-kicker" class="canva-text terminal text-xs tracking-[.2em] text-emerald-200/70"></p>
+       <h2 data-template-id="m2-title" class="canva-text mt-2 font-bold"></h2>
+       <div class="mt-5 border border-emerald-300/25 bg-emerald-300/5 p-4">
+        <p data-template-id="m2-reference" class="canva-text terminal text-xs text-emerald-300"></p>
+        <div class="mt-3 grid gap-2 text-xs sm:grid-cols-3">
+         <div class="border border-emerald-300/20 p-2"><b>LEVEL 0</b> · Normal
+         </div>
+         <div class="border border-emerald-300/20 p-2"><b>LEVEL 1</b> · Low unrest
+         </div>
+         <div class="border border-emerald-300/20 p-2"><b>LEVEL 2</b> · Increasing unrest
+         </div>
+         <div class="border border-amber-300/30 p-2"><b>LEVEL 3</b> · Magmatic unrest
+         </div>
+         <div class="border border-amber-300/30 p-2"><b>LEVEL 4</b> · Hazardous eruption possible
+         </div>
+         <div class="border border-red-300/30 p-2"><b>LEVEL 5</b> · Eruption ongoing
+         </div>
+        </div>
+       </div>
+       <div class="mt-6 border border-emerald-300/25 bg-black/20 p-5">
+        <p data-template-id="m2-scenario" class="canva-text min-h-16 text-lg text-emerald-50/85" aria-live="polite">Unusual volcanic earthquakes and increased steam emissions are detected, but activity remains low and localized.</p>
+        <p id="m2-progress" class="terminal mt-3 text-xs text-amber-200">SCENARIO 1/1</p>
+       </div>
+       <div class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <button type="button" class="alert-choice line-card p-3 text-left" data-level="0">LEVEL 0</button><button type="button" class="alert-choice line-card p-3 text-left" data-level="1">LEVEL 1</button><button type="button" class="alert-choice line-card p-3 text-left" data-level="2">LEVEL 2</button> <button type="button" class="alert-choice line-card p-3 text-left" data-level="3">LEVEL 3</button><button type="button" class="alert-choice line-card p-3 text-left" data-level="4">LEVEL 4</button><button type="button" class="alert-choice line-card p-3 text-left" data-level="5">LEVEL 5</button>
+       </div>
+      </section>
+      <section id="module-3" class="module-view hidden">
+       <p data-template-id="m3-kicker" class="canva-text terminal text-xs tracking-[.2em] text-emerald-200/70"></p>
+       <h2 data-template-id="m3-title" class="canva-text mt-2 font-bold"></h2>
+       <p data-template-id="m3-copy" class="canva-text mt-2 text-emerald-50/70"></p>
+       <div class="mt-6 grid gap-4 md:grid-cols-3">
+        <button type="button" class="history-card line-card overflow-hidden text-left" data-history="pinatubo"><img data-template-id="pinatubo-image" loading="lazy" class="canva-image h-36 w-full object-cover"><span class="block p-4"><strong>Mt. Pinatubo</strong><small class="mt-1 block opacity-65">1991 eruption</small></span></button> <button type="button" class="history-card line-card overflow-hidden text-left" data-history="taal"><img data-template-id="taal-image" loading="lazy" class="canva-image h-36 w-full object-cover"><span class="block p-4"><strong>Taal Volcano</strong><small class="mt-1 block opacity-65">2020 ash plume</small></span></button> <button type="button" class="history-card line-card overflow-hidden text-left" data-history="mayon"><img data-template-id="mayon-history-image" loading="lazy" class="canva-image h-36 w-full object-cover"><span class="block p-4"><strong>Mayon Volcano</strong><small class="mt-1 block opacity-65">Permanent Danger Zone</small></span></button>
+       </div>
+       <div id="history-result" class="mt-5 border border-emerald-300/25 p-5 text-emerald-50/75" aria-live="polite">
+        Choose an image report to investigate the event.
+       </div>
+      </section>
+      <section id="module-4" class="module-view hidden">
+       <p data-template-id="m4-kicker" class="canva-text terminal text-xs tracking-[.2em] text-emerald-200/70"></p>
+       <h2 data-template-id="m4-title" class="canva-text mt-2 font-bold"></h2>
+       <div class="mt-6 grid gap-5 md:grid-cols-2">
+        <article class="line-card overflow-hidden"><img data-template-id="pyro-image" loading="lazy" class="canva-image h-40 w-full object-cover">
+         <div class="p-4">
+          <h3 data-template-id="pyro-title" class="canva-text font-bold"></h3>
+          <p data-template-id="pyro-copy" class="canva-text mt-2 text-sm text-emerald-50/70"></p>
+         </div>
+        </article>
+        <article class="line-card overflow-hidden"><img data-template-id="lahar-image" loading="lazy" class="canva-image h-40 w-full object-cover">
+         <div class="p-4">
+          <h3 data-template-id="lahar-title" class="canva-text font-bold"></h3>
+          <p data-template-id="lahar-copy" class="canva-text mt-2 text-sm text-emerald-50/70"></p>
+         </div>
+        </article>
+       </div>
+       <div class="mt-6 border border-emerald-300/25 p-4">
+        <p data-template-id="m4-question" class="canva-text font-bold"></p>
+        <div class="mt-3 flex flex-wrap gap-2"><button type="button" class="hazard-answer border border-emerald-300/25 px-4 py-2" data-hazard="true">Heavy rain mixes with loose ash</button><button type="button" class="hazard-answer border border-emerald-300/25 px-4 py-2" data-hazard="false">Clear weather dries river channels</button>
+        </div>
+       </div>
+      </section>
+      <section id="module-5" class="module-view hidden">
+       <p data-template-id="m5-kicker" class="canva-text terminal text-xs tracking-[.2em] text-emerald-200/70"></p>
+       <h2 data-template-id="m5-title" class="canva-text mt-2 font-bold"></h2>
+       <div class="mt-6 grid gap-5 md:grid-cols-2">
+        <article class="line-card overflow-hidden"><img data-template-id="gobag-image" loading="lazy" class="canva-image h-40 w-full object-cover">
+         <div class="p-4">
+          <h3 data-template-id="gobag-title" class="canva-text font-bold"></h3>
+          <p data-template-id="gobag-copy" class="canva-text mt-2 text-sm text-emerald-50/70"></p>
+         </div>
+        </article>
+        <article class="line-card overflow-hidden"><img data-template-id="shelter-image" loading="lazy" class="canva-image h-40 w-full object-cover">
+         <div class="p-4">
+          <h3 data-template-id="shelter-title" class="canva-text font-bold"></h3>
+          <p data-template-id="shelter-copy" class="canva-text mt-2 text-sm text-emerald-50/70"></p>
+         </div>
+        </article>
+       </div>
+       <p data-template-id="m5-instruction" class="canva-text terminal mt-5 text-xs text-emerald-200"></p>
+       <div class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <button class="bag-item border border-emerald-300/20 p-3 text-sm" data-essential="true">N95 masks</button><button class="bag-item border border-emerald-300/20 p-3 text-sm" data-essential="false">Desktop PC</button><button class="bag-item border border-emerald-300/20 p-3 text-sm" data-essential="true">Radio &amp; torch</button><button class="bag-item border border-emerald-300/20 p-3 text-sm" data-essential="true">Water supply</button> <button class="bag-item border border-emerald-300/20 p-3 text-sm" data-essential="false">Glass ornaments</button><button class="bag-item border border-emerald-300/20 p-3 text-sm" data-essential="true">First aid kit</button><button class="bag-item border border-emerald-300/20 p-3 text-sm" data-essential="false">Furniture</button><button class="bag-item border border-emerald-300/20 p-3 text-sm" data-essential="false">Paper parasol</button>
+       </div><button id="verify-bag" data-template-id="verify-bag" type="button" class="canva-button mt-4 border border-emerald-200 bg-emerald-300 px-4 py-3 font-bold text-[#052214]"><span data-template-id="verify-bag-label" class="canva-text"></span></button>
+      </section>
+      <section id="mini-dino" class="mini-game hidden">
+       <p data-template-id="dino-kicker" class="canva-text terminal text-xs tracking-[.2em] text-amber-200"></p>
+       <h2 data-template-id="dino-title" class="canva-text mt-2 font-bold"></h2>
+       <p data-template-id="dino-copy" class="canva-text mt-2 text-emerald-50/70"></p>
+       <div id="dino-track" class="relative mt-6 h-64 overflow-hidden border border-emerald-300/30 bg-[#04100b]">
+        <div class="absolute bottom-9 left-0 right-0 border-t border-dashed border-emerald-300/35"></div>
+        <div id="dino-player" class="dino absolute bottom-10 left-10 z-10 flex h-12 w-12 items-center justify-center border border-emerald-300 bg-emerald-300/15 text-emerald-200"><i data-lucide="bot"></i>
+        </div>
+        <div id="dino-obstacle" class="hidden obstacle absolute bottom-10 right-0 h-10 w-7 border border-amber-300 bg-amber-300/30"></div>
+        <p id="dino-status" class="terminal absolute left-4 top-4 text-xs text-emerald-200">OBSTACLES CLEARED: 0/3</p>
+       </div><button id="jump-button" data-template-id="jump-button" type="button" class="canva-button mt-4 border border-emerald-300 bg-emerald-300 px-4 py-3 font-bold text-[#052214]"><span data-template-id="jump-button-label" class="canva-text"></span></button>
+      </section>
+      <section id="mini-crossword" class="mini-game hidden">
+       <p data-template-id="crossword-kicker" class="canva-text terminal text-xs tracking-[.2em] text-amber-200"></p>
+       <h2 data-template-id="crossword-title" class="canva-text mt-2 font-bold"></h2>
+       <p data-template-id="crossword-copy" class="canva-text mt-2 text-emerald-50/70"></p>
+       <div class="mt-6 border border-emerald-300/25 bg-black/20 p-5">
+        <p id="crossword-clue" class="text-lg text-emerald-50/85"></p>
+        <p id="crossword-progress" class="terminal mt-2 text-xs text-amber-200">CLUE 1/3</p>
+       </div>
+       <div class="mt-4 grid gap-3 sm:grid-cols-3">
+        <button class="crossword-option line-card p-4 text-left" data-word="SEISMOMETER">SEISMOMETER</button> <button class="crossword-option line-card p-4 text-left" data-word="LAHAR">LAHAR</button> <button class="crossword-option line-card p-4 text-left" data-word="EVACUATE">EVACUATE</button>
+       </div>
+      </section>
+      <section id="mini-sort" class="mini-game hidden">
+       <p data-template-id="sort-kicker" class="canva-text terminal text-xs tracking-[.2em] text-amber-200"></p>
+       <h2 data-template-id="sort-title" class="canva-text mt-2 font-bold"></h2>
+       <p data-template-id="sort-copy" class="canva-text mt-2 text-emerald-50/70"></p>
+       <div class="mt-6 grid gap-5 md:grid-cols-2">
+        <div>
+         <p class="terminal mb-3 text-xs text-emerald-200">HAZARD SIGNALS</p>
+         <div id="token-bank" class="grid gap-2">
+          <button class="drag-token line-card p-3 text-left" type="button" draggable="true" data-sort="volcanic">Ash plume</button> <button class="drag-token line-card p-3 text-left" type="button" draggable="true" data-sort="rain">Heavy rainfall</button> <button class="drag-token line-card p-3 text-left" type="button" draggable="true" data-sort="volcanic">Glowing crater</button>
+         </div>
+        </div>
+        <div class="grid gap-3">
+         <div class="drop-zone min-h-24 border border-amber-300/50 bg-amber-300/5 p-4" data-zone="volcanic"><strong>VOLCANIC ACTIVITY</strong>
+          <p class="mt-1 text-xs text-emerald-50/60">Drop volcanic signs here.</p>
+         </div>
+         <div class="drop-zone min-h-24 border border-sky-300/50 bg-sky-300/5 p-4" data-zone="rain"><strong>RAIN TRIGGER</strong>
+          <p class="mt-1 text-xs text-emerald-50/60">Drop weather trigger here.</p>
+         </div>
+        </div>
+       </div>
+       <p id="sort-status" class="terminal mt-4 text-xs text-emerald-200">SORTED: 0/3</p>
+      </section>
+      <section id="mini-memory" class="mini-game hidden">
+       <p data-template-id="memory-kicker" class="canva-text terminal text-xs tracking-[.2em] text-amber-200"></p>
+       <h2 data-template-id="memory-title" class="canva-text mt-2 font-bold"></h2>
+       <p data-template-id="memory-copy" class="canva-text mt-2 text-emerald-50/70"></p>
+       <div id="memory-grid" class="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4">
+        <button class="memory-card h-24" data-pair="mask"><span class="memory-card-inner relative block h-full w-full"><span class="memory-face absolute inset-0 flex items-center justify-center border border-emerald-300/35 bg-[#0b2017] text-emerald-200">?</span><span class="memory-face memory-back absolute inset-0 flex items-center justify-center border border-emerald-300 bg-emerald-300/15 text-2xl">😷</span></span></button> <button class="memory-card h-24" data-pair="radio"><span class="memory-card-inner relative block h-full w-full"><span class="memory-face absolute inset-0 flex items-center justify-center border border-emerald-300/35 bg-[#0b2017] text-emerald-200">?</span><span class="memory-face memory-back absolute inset-0 flex items-center justify-center border border-emerald-300 bg-emerald-300/15 text-2xl">📻</span></span></button> <button class="memory-card h-24" data-pair="water"><span class="memory-card-inner relative block h-full w-full"><span class="memory-face absolute inset-0 flex items-center justify-center border border-emerald-300/35 bg-[#0b2017] text-emerald-200">?</span><span class="memory-face memory-back absolute inset-0 flex items-center justify-center border border-emerald-300 bg-emerald-300/15 text-2xl">💧</span></span></button> <button class="memory-card h-24" data-pair="firstaid"><span class="memory-card-inner relative block h-full w-full"><span class="memory-face absolute inset-0 flex items-center justify-center border border-emerald-300/35 bg-[#0b2017] text-emerald-200">?</span><span class="memory-face memory-back absolute inset-0 flex items-center justify-center border border-emerald-300 bg-emerald-300/15 text-2xl">🩹</span></span></button> <button class="memory-card h-24" data-pair="mask"><span class="memory-card-inner relative block h-full w-full"><span class="memory-face absolute inset-0 flex items-center justify-center border border-emerald-300/35 bg-[#0b2017] text-emerald-200">?</span><span class="memory-face memory-back absolute inset-0 flex items-center justify-center border border-emerald-300 bg-emerald-300/15 text-2xl">😷</span></span></button> <button class="memory-card h-24" data-pair="radio"><span class="memory-card-inner relative block h-full w-full"><span class="memory-face absolute inset-0 flex items-center justify-center border border-emerald-300/35 bg-[#0b2017] text-emerald-200">?</span><span class="memory-face memory-back absolute inset-0 flex items-center justify-center border border-emerald-300 bg-emerald-300/15 text-2xl">📻</span></span></button> <button class="memory-card h-24" data-pair="water"><span class="memory-card-inner relative block h-full w-full"><span class="memory-face absolute inset-0 flex items-center justify-center border border-emerald-300/35 bg-[#0b2017] text-emerald-200">?</span><span class="memory-face memory-back absolute inset-0 flex items-center justify-center border border-emerald-300 bg-emerald-300/15 text-2xl">💧</span></span></button> <button class="memory-card h-24" data-pair="firstaid"><span class="memory-card-inner relative block h-full w-full"><span class="memory-face absolute inset-0 flex items-center justify-center border border-emerald-300/35 bg-[#0b2017] text-emerald-200">?</span><span class="memory-face memory-back absolute inset-0 flex items-center justify-center border border-emerald-300 bg-emerald-300/15 text-2xl">🩹</span></span></button>
+       </div>
+       <p id="memory-status" class="terminal mt-4 text-xs text-emerald-200">PAIRS FOUND: 0/4</p>
+      </section>
+      <footer class="mt-8 flex items-center justify-between gap-3 border-t border-emerald-300/20 pt-4">
+       <p id="footer-status" class="text-sm text-emerald-100/75">Calibrate the four monitoring instruments to begin.</p><button id="next-module" data-template-id="next-module" type="button" class="canva-button border border-emerald-300 bg-emerald-300 px-4 py-2 font-bold text-[#052214]"><span data-template-id="next-module-label" class="canva-text"></span></button>
+      </footer>
+     </div>
+    </section>
+   </main>
+  </div>
+  <div id="handbook-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/75 p-4 backdrop-blur">
+   <section class="panel w-full max-w-xl p-6">
+    <div class="flex items-center justify-between">
+     <h2 data-template-id="handbook-title" class="canva-text font-bold"></h2><button id="close-handbook" type="button" aria-label="Close handbook"><i data-lucide="x"></i></button>
+    </div>
+    <p data-template-id="handbook-copy" class="canva-text mt-4 text-sm leading-relaxed text-emerald-50/75"></p>
+   </section>
+  </div>
+  <div id="certificate-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 p-4 backdrop-blur">
+   <section class="w-full max-w-xl border-2 border-emerald-300 bg-[#07170f] p-7 text-center shadow-[0_0_55px_rgba(84,242,156,.22)]">
+    <i data-lucide="badge-check" class="mx-auto h-14 w-14 text-emerald-300"></i>
+    <p data-template-id="certificate-kicker" class="canva-text terminal mt-4 text-xs tracking-[.2em] text-emerald-200"></p>
+    <h2 data-template-id="certificate-title" class="canva-text mt-2 font-bold"></h2>
+    <p data-template-id="certificate-copy" class="canva-text mx-auto mt-4 max-w-md text-emerald-50/70"></p>
+    <div class="mx-auto mt-5 grid max-w-md gap-3 text-left sm:grid-cols-2">
+     <div>
+      <label data-template-id="certificate-name-label" for="certificate-name" class="canva-text mb-1 block text-xs font-bold text-emerald-200">Student name</label><input id="certificate-name" type="text" autocomplete="name" class="canva-input w-full border border-emerald-300/30 bg-black/20 px-3 py-2 text-emerald-50" placeholder="Enter your name">
+     </div>
+     <div>
+      <label data-template-id="certificate-section-label" for="certificate-section" class="canva-text mb-1 block text-xs font-bold text-emerald-200">Section</label><input id="certificate-section" type="text" class="canva-input w-full border border-emerald-300/30 bg-black/20 px-3 py-2 text-emerald-50" placeholder="Enter your section">
+     </div>
+    </div>
+    <p id="certificate-recipient" class="mt-4 text-sm text-emerald-100/80" aria-live="polite"></p>
+    <p class="terminal mt-6 text-sm text-amber-200">MISSION XP: <span id="certificate-xp">0</span></p><button id="close-certificate" data-template-id="certificate-close" type="button" class="canva-button mt-6 border border-emerald-300 px-4 py-2 text-emerald-100"><span data-template-id="certificate-close-label" class="canva-text"></span></button>
+   </section>
+  </div>
+  <script>
+    const state = { module:1, unlocked:1, xp:0, badges:0, calibrated:new Set(), historyRead:new Set(), done:{}, sound:true, bag:new Set(), intermission:null, dino:0, dinoHits:0, dinoObstacleActive:false, cross:0, sorted:0, pairs:0, flipped:[], busy:false };
+    const feedback = document.getElementById("feedback");
+    const footerStatus = document.getElementById("footer-status");
+    let audioContext, selectedToken = null;
+
+    function sound(kind="tap") {
+      if (!state.sound) return;
+      try {
+        audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioContext.createOscillator(), gain = audioContext.createGain(), now = audioContext.currentTime;
+        osc.type = kind === "success" ? "triangle" : "sine";
+        osc.frequency.setValueAtTime(kind === "success" ? 520 : 260, now);
+        if (kind === "success") osc.frequency.exponentialRampToValueAtTime(880, now + .18);
+        gain.gain.setValueAtTime(.08, now); gain.gain.exponentialRampToValueAtTime(.001, now + .25);
+        osc.connect(gain).connect(audioContext.destination); osc.start(); osc.stop(now + .25);
+      } catch (error) {}
+    }
+
+    function robo(text, good=false) {
+      feedback.textContent = text;
+      feedback.style.color = good ? "#54f29c" : "#e8fff2";
+      footerStatus.textContent = text;
+      sound(good ? "success" : "tap");
+    }
+
+    function award(points) {
+      state.xp += points;
+      document.getElementById("xp").textContent = state.xp;
+    }
+
+    function hideViews() {
+      document.querySelectorAll(".module-view,.mini-game").forEach(view => view.classList.add("hidden"));
+    }
+
+    function showModule(num) {
+      if (num > state.unlocked) return robo("This field station is still locked. Finish the active mission first.");
+      state.intermission = null;
+      state.module = num;
+      hideViews();
+      document.getElementById("module-" + num).classList.remove("hidden");
+      document.querySelectorAll(".module-nav").forEach(button => button.classList.toggle("active-nav", Number(button.dataset.module) === num));
+      robo("Module " + num + " active. Review the evidence and send your best answer.", true);
+    }
+
+    function showMiniGame(name) {
+      state.intermission = name;
+      hideViews();
+      document.getElementById("mini-" + name).classList.remove("hidden");
+      document.querySelectorAll(".module-nav").forEach(button => button.classList.remove("active-nav"));
+      robo("Mini-game channel opened. Complete it to unlock the next field station.", true);
+      if (name === "dino") startDino();
+      if (name === "crossword") renderCrossword();
+    }
+
+    function completeModule(module) {
+      if (state.done[module]) return;
+      state.done[module] = true;
+      state.badges = Math.max(state.badges, module);
+      document.getElementById("badges").textContent = state.badges + "/5";
+      if (module < 5) {
+        state.unlocked = Math.max(state.unlocked, module + 1);
+        document.querySelector('[data-module="' + (module + 1) + '"]').classList.remove("locked");
+        const games = {1:"dino",2:"crossword",3:"sort",4:"memory"};
+        robo("Excellent field work! RoboVolc has queued a calibration mini-game before your next module.", true);
+        if (module !== 3) showMiniGame(games[module]);
+      } else {
+        robo("All mission modules complete. You are ready for your field certificate!", true);
+      }
+    }
+
+    function finishMiniGame(points) {
+      award(points);
+      const next = state.module + 1;
+      robo("Mini-game complete! " + points + " XP added. Module " + next + " is now ready.", true);
+      state.intermission = null;
+      showModule(next);
+    }
+
+    document.getElementById("start-button").addEventListener("click", () => {
+      document.getElementById("boot-screen").classList.add("hidden");
+      document.getElementById("app-shell").classList.remove("hidden");
+      robo("Welcome, trainee. I am RoboVolc. Calibrate every monitoring channel to start.");
+      lucide.createIcons();
+    });
+
+    document.querySelectorAll(".module-nav").forEach(button => button.addEventListener("click", () => showModule(Number(button.dataset.module))));
+    document.getElementById("sound-button").addEventListener("click", () => {
+      state.sound = !state.sound;
+      robo(state.sound ? "Audio sensor feedback enabled." : "Audio sensor feedback muted.");
+    });
+
+    document.getElementById("handbook-button").addEventListener("click", () => {
+      const modal = document.getElementById("handbook-modal");
+      modal.classList.remove("hidden"); modal.classList.add("flex");
+    });
+    document.getElementById("close-handbook").addEventListener("click", () => document.getElementById("handbook-modal").classList.add("hidden"));
+    document.getElementById("close-certificate").addEventListener("click", () => document.getElementById("certificate-modal").classList.add("hidden"));
+
+    document.querySelectorAll(".instrument").forEach(card => card.addEventListener("click", () => {
+      const id = card.dataset.instrument;
+      if (state.calibrated.has(id)) return robo("That " + id + " channel is already calibrated.");
+      state.calibrated.add(id);
+      card.classList.add("!border-emerald-300");
+      card.querySelector(".instrument-status").textContent = "STATUS: CALIBRATED";
+      award(25);
+      robo(id.toUpperCase() + " channel calibrated. Good signal acquisition!", true);
+      if (state.calibrated.size === 4) robo("All four channels are live. Now complete the knowledge check.", true);
+    }));
+
+    document.querySelectorAll(".answer").forEach(button => button.addEventListener("click", () => {
+      if (button.dataset.answer === "true" && state.calibrated.size === 4) {
+        award(100); completeModule(1);
+      } else if (button.dataset.answer === "true") {
+        robo("Almost! Calibrate all four instruments before validating the lesson.");
+      } else {
+        robo("Not quite. Reliable early warning combines many signals, not one perfect prediction.");
+      }
+    }));
+
+    const alertScenarios = [
+      { text:"Unusual volcanic earthquakes and increased steam emissions are detected, but activity remains low and localized.", level:1, hint:"Look for low-level unrest without signs of escalating danger: this is the first step above normal background activity." }
+    ];
+    let alertScenarioIndex = 0;
+    function renderAlertScenario() {
+      const scenario = document.getElementById("m2-scenario");
+      const progress = document.getElementById("m2-progress");
+      if (!scenario || !progress) return;
+      scenario.textContent = alertScenarios[alertScenarioIndex].text;
+      progress.textContent = "SCENARIO " + (alertScenarioIndex + 1) + "/5";
+    }
+    renderAlertScenario();
+    document.querySelectorAll(".alert-choice").forEach(button => button.addEventListener("click", () => {
+      if (Number(button.dataset.level) === alertScenarios[alertScenarioIndex].level) {
+        award(20);
+        if (alertScenarioIndex === alertScenarios.length - 1) {
+          document.getElementById("alert-badge").textContent = "LEVEL " + button.dataset.level;
+          document.getElementById("alert-badge").style.borderColor = "#f4b942";
+          award(100); completeModule(2);
+        } else {
+          alertScenarioIndex++;
+          renderAlertScenario();
+          robo("Correct classification. Load the next alert-level scenario.", true);
+        }
+      } else {
+        const scenario = alertScenarios[alertScenarioIndex];
+        robo("Not quite. Hint: " + scenario.hint);
+      }
+    }));
+
+    const history = {
+      pinatubo:"PINATUBO / 1991: A major eruption sent sulfur dioxide high into the atmosphere and produced ashfall and lahars.",
+      taal:"TAAL / 2020: Water and magma interactions produced a phreatomagmatic eruption and widespread ashfall.",
+      mayon:"MAYON / ACTIVE: The Permanent Danger Zone protects communities from lava, rockfall, and pyroclastic density currents."
+    };
+    document.querySelectorAll(".history-card").forEach(button => button.addEventListener("click", () => {
+      const report = button.dataset.history;
+      document.getElementById("history-result").textContent = history[report];
+      if (!state.historyRead.has(report)) {
+        state.historyRead.add(report);
+        award(35);
+      }
+      const remaining = 3 - state.historyRead.size;
+      if (remaining > 0) {
+        robo("Archive report decoded. Read " + remaining + " more report" + (remaining === 1 ? "" : "s") + " before advancing.", true);
+      } else {
+        robo("All three archive reports decoded. Click Next Module when you are ready for the hazard sort.", true);
+        completeModule(3);
+      }
+    }));
+
+    document.querySelectorAll(".hazard-answer").forEach(button => button.addEventListener("click", () => {
+      if (button.dataset.hazard === "true") { award(100); completeModule(4); }
+      else robo("Not quite. Lahars can form when heavy rain remobilizes loose volcanic ash and rocks.");
+    }));
+
+    document.querySelectorAll(".bag-item").forEach((button,index) => button.addEventListener("click", () => {
+      button.classList.toggle("bg-emerald-300/15");
+      button.classList.toggle("border-emerald-300");
+      state.bag.has(index) ? state.bag.delete(index) : state.bag.add(index);
+      sound();
+    }));
+
+    document.getElementById("verify-bag").addEventListener("click", () => {
+      const selected = [...document.querySelectorAll(".bag-item")].filter((button,index) => state.bag.has(index));
+      if (selected.length === 4 && selected.every(button => button.dataset.essential === "true")) {
+        award(100); completeModule(5);
+      } else robo("RoboVolc check: choose exactly four essentials — masks, radio and torch, water, and a first aid kit.");
+    });
+
+    function jump() {
+      if (state.intermission !== "dino") return;
+      const player = document.getElementById("dino-player");
+      if (!player || player.classList.contains("jump")) return;
+      player.classList.add("jump", "bounce");
+      setTimeout(() => player.classList.remove("jump", "bounce"), 650);
+      sound();
+    }
+
+    function startDino() {
+      state.dino = 0;
+      state.dinoHits = 0;
+      state.dinoObstacleActive = false;
+      document.getElementById("dino-status").textContent = "OBSTACLES CLEARED: 0/5 · HITS: 0";
+      document.getElementById("dino-obstacle").classList.add("hidden");
+      robo("Use Jump, Space, or Arrow Up when ashfall obstacles approach. Five clean clears are needed; each collision removes one.", true);
+      setTimeout(sendObstacle, 900);
+    }
+
+    document.getElementById("jump-button").addEventListener("click", jump);
+    document.addEventListener("keydown", event => {
+      if ((event.code === "Space" || event.code === "ArrowUp") && state.intermission === "dino") {
+        event.preventDefault(); jump();
+      }
+    });
+
+    function sendObstacle() {
+      if (state.intermission !== "dino" || state.dino >= 5 || state.dinoObstacleActive) return;
+      const obstacle = document.getElementById("dino-obstacle");
+      state.dinoObstacleActive = true;
+      obstacle.classList.remove("hidden", "obstacle");
+      void obstacle.offsetWidth;
+      obstacle.classList.add("obstacle");
+      setTimeout(() => {
+        if (state.intermission !== "dino") return;
+        const player = document.getElementById("dino-player");
+        const playerBox = player.getBoundingClientRect();
+        const obstacleBox = obstacle.getBoundingClientRect();
+        const inContact = playerBox.right > obstacleBox.left && playerBox.left < obstacleBox.right && playerBox.bottom > obstacleBox.top && playerBox.top < obstacleBox.bottom;
+        if (inContact) {
+          state.dinoHits++;
+          state.dino = Math.max(0, state.dino - 1);
+          robo("Ashfall collision! One clear was removed. Jump with the button, Space, or Arrow Up on the next run.");
+        } else {
+          state.dino++;
+          robo("Clean jump! RoboVolc cleared the ashfall.", true);
+        }
+        state.dinoObstacleActive = false;
+        obstacle.classList.add("hidden");
+        document.getElementById("dino-status").textContent = "OBSTACLES CLEARED: " + state.dino + "/5 · HITS: " + state.dinoHits;
+        if (state.dino >= 5) setTimeout(() => finishMiniGame(75), 500);
+        else setTimeout(sendObstacle, 700);
+      }, 3200);
+    }
+
+    const clues = [
+      { clue:"Instrument that detects volcanic earthquakes caused by moving magma.", answer:"SEISMOMETER" },
+      { clue:"Volcanic mudflow created when rain mixes with loose ash and debris.", answer:"LAHAR" },
+      { clue:"What communities should do early when authorities issue an evacuation order.", answer:"EVACUATE" }
+    ];
+    function renderCrossword() {
+      document.getElementById("crossword-clue").textContent = clues[state.cross].clue;
+      document.getElementById("crossword-progress").textContent = "CLUE " + (state.cross + 1) + "/3";
+    }
+    document.querySelectorAll(".crossword-option").forEach(button => button.addEventListener("click", () => {
+      if (button.dataset.word === clues[state.cross].answer) {
+        state.cross++;
+        if (state.cross === 3) {
+          state.cross = 0;
+          robo("Signal crossword decoded. Those terms belong in every field learner's toolkit!", true);
+          finishMiniGame(75);
+        } else {
+          robo("Correct! RoboVolc has loaded the next signal clue.", true);
+          renderCrossword();
+        }
+      } else robo("That word does not fit this field clue. Read the signal description again.");
+    }));
+
+    function placeToken(token, zone) {
+      if (!token || token.dataset.placed === "true") return;
+      if (token.dataset.sort === zone.dataset.zone) {
+        token.dataset.placed = "true";
+        token.classList.add("!border-emerald-300", "!bg-emerald-300/15");
+        zone.appendChild(token);
+        state.sorted++;
+        document.getElementById("sort-status").textContent = "SORTED: " + state.sorted + "/3";
+        robo("Correct classification. That signal belongs there.", true);
+        if (state.sorted === 3) setTimeout(() => finishMiniGame(75), 450);
+      } else robo("RoboVolc correction: match the signal to its real hazard trigger.");
+      selectedToken = null;
+    }
+
+    document.querySelectorAll(".drag-token").forEach(token => {
+      token.addEventListener("dragstart", event => { selectedToken = token; event.dataTransfer.setData("text/plain", token.textContent); token.classList.add("dragging"); });
+      token.addEventListener("dragend", () => token.classList.remove("dragging"));
+      token.addEventListener("click", () => {
+        if (token.dataset.placed === "true") return;
+        selectedToken = token;
+        robo("Selected " + token.textContent + ". Tap a category to place it.");
+      });
+    });
+    document.querySelectorAll(".drop-zone").forEach(zone => {
+      zone.addEventListener("dragover", event => event.preventDefault());
+      zone.addEventListener("drop", event => { event.preventDefault(); placeToken(selectedToken, zone); });
+      zone.addEventListener("click", () => placeToken(selectedToken, zone));
+    });
+
+    document.querySelectorAll(".memory-card").forEach(card => card.addEventListener("click", () => {
+      if (state.busy || card.classList.contains("flipped") || card.classList.contains("matched")) return;
+      card.classList.add("flipped");
+      state.flipped.push(card);
+      sound();
+      if (state.flipped.length === 2) {
+        state.busy = true;
+        const [one,two] = state.flipped;
+        if (one.dataset.pair === two.dataset.pair) {
+          setTimeout(() => {
+            one.classList.add("matched"); two.classList.add("matched");
+            state.pairs++;
+            document.getElementById("memory-status").textContent = "PAIRS FOUND: " + state.pairs + "/4";
+            state.flipped = []; state.busy = false;
+            robo("Preparedness pair matched!", true);
+            if (state.pairs === 4) setTimeout(() => finishMiniGame(100), 450);
+          }, 420);
+        } else {
+          setTimeout(() => {
+            one.classList.remove("flipped"); two.classList.remove("flipped");
+            state.flipped = []; state.busy = false;
+            robo("Not a match yet. Keep the go-bag essentials in mind.");
+          }, 720);
+        }
+      }
+    }));
+
+    document.getElementById("certificate-name").addEventListener("input", updateCertificateRecipient);
+    document.getElementById("certificate-section").addEventListener("input", updateCertificateRecipient);
+    function updateCertificateRecipient() {
+      const name = document.getElementById("certificate-name").value.trim() || "Student name";
+      const section = document.getElementById("certificate-section").value.trim() || "Section";
+      document.getElementById("certificate-recipient").textContent = name + " · " + section;
+    }
+
+    document.getElementById("next-module").addEventListener("click", () => {
+      if (state.intermission) return robo("Complete the active mini-game before moving on.");
+      if (!state.done[state.module]) return robo("Finish this learning module before advancing.");
+      if (state.module < 5) {
+        const games = {1:"dino",2:"crossword",3:"sort",4:"memory"};
+        showMiniGame(games[state.module]);
+      } else {
+        document.getElementById("certificate-xp").textContent = state.xp;
+        const modal = document.getElementById("certificate-modal");
+        modal.classList.remove("hidden"); modal.classList.add("flex");
+        sound("success");
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      document.getElementById("feedback").textContent = "Boot sequence ready. Start the mission when you are ready, trainee.";
+    });
+  </script>
+ </body>
+</html>
